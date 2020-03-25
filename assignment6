@@ -1,0 +1,307 @@
+1)Create a strongly typed collection to store many provisional store items. Search the product using product id and display the result.
+Do exception handling and necessary validations.
+
+Program:
+import java.util.*;
+
+class Book {  
+ int id;  
+String name,author,publisher;  
+int quantity;  
+public Book(int id, String name, String author, String publisher, int quantity) {  
+this.id = id;  
+this.name = name;  
+this.author = author;  
+this.publisher = publisher;  
+this.quantity = quantity;  
+}  
+}  
+public class Product {  
+public static void main(String[] args) {  
+//Creating list of Books  
+List<Book> list=new ArrayList<Book>();  
+
+Scanner sc=new Scanner(System.in);
+int Id=sc.nextInt();
+//Creating Books  
+Book b1=new Book(101,"Let us C","Yashwant Kanetkar","BPB",8);  
+Book b2=new Book(102,"Data Communications & Networking","Forouzan","Mc Graw Hill",4);  
+Book b3=new Book(103,"Operating System","Galvin","Wiley",6);  
+//Adding Books to list  
+list.add(b1);  
+list.add(b2);  
+list.add(b3);  
+//Traversing list  
+System.out.println("Total data is:");
+for(Book b:list){  
+System.out.println(b.id+" "+b.name+" "+b.author+" "+b.publisher+" "+b.quantity);  
+} 
+System.out.println("\nEnter required id:");  
+
+for(Book b:list){  
+    if(b.id==Id){
+System.out.println(b.id+" "+b.name+" "+b.author+" "+b.publisher+" "+b.quantity);  
+    }
+} 
+}  
+}
+
+
+Output:
+ 
+
+2)Automate the management system to store student details, such as ID, name, date of birth, blood group, height, and marks details of the students as well as details of Employees for their health benefit. The application should accept student ID and name of the student as command-line parameters and display the student details. 
+Do exception handling, necessary validations and store data as a collection.
+
+Program:
+import java.util.*;
+
+class Book{  
+  public int id;  
+public String name;
+public String date_of_birth;
+public String blood_group;
+public double height;
+public int marks;
+int quantity;  
+public Book(int id, String name, String date_of_birth, String blood_group, double height, int marks) {  
+this.id = id;  
+this.name = name;  
+this.date_of_birth=date_of_birth;  
+this.blood_group=blood_group;  
+this.height=height;
+this.marks=marks;
+}  
+}  
+public class Details {  
+public static void main(String[] args) {  
+//Creating list of Books  
+List<Book> list=new ArrayList<Book>();  
+System.out.println("enter Id:");
+
+int Id=Integer.parseInt(args[0]);
+System.out.println(Id);
+System.out.println("enter Name:");
+String Name=args[1];
+System.out.println(Name);
+//Creating Books  
+Book b1=new Book(1, "Jyothi","3-9-1997", "B-positive",5.2, 400);  
+Book b2=new Book(2, "Riya","4-5-1996", "A-positive",5.6, 500);  
+Book b3=new Book(3, "Balu","5-7-1994", "o-positive",6.0, 300);  
+//Adding Books to list  
+list.add(b1);  
+list.add(b2);  
+list.add(b3);  
+//Traversing list  
+System.out.println("Total data is:");
+for(Book b:list){  
+System.out.println(b.id+" "+b.name+" "+b.date_of_birth+" "+b.blood_group+" "+b.height+" "+b.marks);  
+} 
+
+System.out.println("\nthe searching data is:");
+for(Book b:list){  
+    if(b.id==Id && (b.name.toLowerCase()).equals(Name)){
+System.out.println(b.id+" "+b.name+" "+b.date_of_birth+" "+b.blood_group+" "+b.height+b.marks);  
+    }
+} 
+}  
+}
+Outout:
+ 
+
+
+   3)Create a Blood Bank Management system with Name, Blood Group, Age, Date of Birth, Address, and Last blood donated date. Those who are under 17 were not allowed to donate blood. Do necessary validations and exception Handling
+
+
+Program:
+import java.util.*;
+class Book{  
+    public String name;
+public String date_of_birth;
+public String blood_group;
+public int age;
+public String last_blood_donated_date;
+public String address;
+
+public Book( String name, String date_of_birth, String blood_group, int age, String last_blood_donated_date, String address ) {  
+  
+this.name = name;  
+this.date_of_birth=date_of_birth;  
+this.blood_group=blood_group;  
+this.age=age;
+this.last_blood_donated_date=last_blood_donated_date;
+this.address=address;
+}  
+}  
+public class Bloodbank {  
+public static void main(String[] args) {  
+//Creating list of Books  
+List<Book> list=new ArrayList<Book>();  
+//Creating Books  
+Book b1=new Book( "Dheeraj","3-9-1997", "B-positive", 30, "3-3-2020", "D-no:2-25,vuyyuru");  
+Book b2=new Book( "Suresh","4-5-1996", "A-positive", 15, "3-2-2020", "D-no:3-24, vijayawada");  
+Book b3=new Book( "Kavya","5-7-1994", "o-positive",10, "Didn't_give_previous", "D-no:5-52, gannavaram");  
+//Adding Books to list  
+list.add(b1);  
+list.add(b2);  
+list.add(b3);  
+//Traversing list  
+System.out.println("Total data is:");
+for(Book b:list){  
+System.out.println(b.name+" " +b.date_of_birth+" "+b.blood_group+" "+b.age+" "+b.last_blood_donated_date+" "+b.address);  
+} 
+System.out.println("\npersons who are not eligible for donating blood:");
+for(Book b:list){  
+    if(b.age<17){
+System.out.println("name:"+" "+b.name+" "+"age:"+b.age+" "+" this person not eligible for donating blood");  
+} 
+}
+
+}  
+}
+
+
+
+Output:
+
+ 
+
+Contact Information Based on Mobile Number
+
+Write a JAVA program to read all the contact information from the user and display the contact name and their mobile number sorted based on their mobile number (descending order). The contact details consist of name, email, mobile and address. 
+Create a main class "Program.cs"
+Create Contact class with below attributes
+
+    name - string
+    email - string
+    mobile - long
+    address - string
+
+Add appropriate getter and setter methods for Contact class
+Include a constructor for Contact class with the arguments name, email, mobile and address
+
+
+Sample Input/Output :
+Enter number of contacts:
+2
+Enter contact 1 detail
+Enter Name
+Amar
+Enter Email
+amar@gmail.com
+Enter Mobile
+7200762700
+Enter Address
+Coimbatore
+Enter contact 2 detail
+Enter Name
+Thana
+Enter Email
+thana@gmail.com
+Enter Mobile
+9566905846
+Enter Address
+Karur
+Contact list after sort by mobile number in descending order
+Thana-9566905846
+Amar-7200762700
+
+Program:
+import java.util.*;  
+public class Student{ 
+    
+public String Name;
+public String Email;
+public  String MN;
+public String Address;
+ public void setName(String name){
+        Name=name;
+        
+    }
+    public String getName(){
+        return Name;
+        
+    }
+    public void setEmail(String email){
+        Email=email;
+        
+    }
+    public String getEmail(){
+        return Email;
+        
+    }
+    public void setMN(String mn){
+        MN=mn;
+        
+    }
+    public String getMN(){
+        return MN;
+        
+    }
+    public void setAddress(String address){
+        Address=address;
+        
+    }
+    public String getAddress(){
+        return Address;
+        
+    }
+   
+  public static void main(String args[]){  
+      System.out.println("enter first person details:");
+     ArrayList<Student> alist=new ArrayList<Student>();
+     
+     System.out.println("enter name:");
+     Scanner sc=new Scanner(System.in);
+    String a=sc.nextLine();
+     System.out.println(a);
+    System.out.println("enter email:");
+String b=sc.nextLine();
+     System.out.println(b);
+     System.out.println("enter phone number:\n");
+   
+     String c=sc.nextLine();
+     System.out.println(c);
+    System.out.println("enter address:");
+    String d=sc.nextLine();
+     System.out.println(d);
+     Student j=new Student();
+   j.setName(a);
+       j.setEmail(b);
+     j.setMN(c);
+     j.setAddress(d);
+     alist.add(j);
+     System.out.println("\nenter second person details:");
+     Student j1=new Student();
+     System.out.println("enter name:");
+     
+    String e=sc.nextLine();
+     System.out.println(e);
+    System.out.println("enter email:");
+    String f=sc.nextLine();
+     System.out.println(f);
+     System.out.println("enter phone number:");
+     
+    String g=sc.nextLine();
+     System.out.println(g);
+    System.out.println("enter address:");
+    String h=sc.nextLine();
+     System.out.println(h);
+     
+     j1.setName(e);
+     j1.setEmail(f);
+      j1.setMN(g);
+     j1.setAddress(h);
+     alist.add(j1);
+     System.out.println("\ntotal persons details in a collection list are:");
+ for(Student s:alist){
+     
+     System.out.println(s.Name+" "+s.Email+" "+s.MN+" "+s.Address);
+         
+         }
+     //displaying elements
+   }
+}
+Output:
+  
+
