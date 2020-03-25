@@ -1,0 +1,683 @@
+Java Assignment 3
+Basic Elements of Java
+(Topics Covered - Variables, Identifiers, Conditions ,Control Statements, Arrays)
+
+1.	Write a Java Program to accept 10 integers in an array, and then delete an element from a given index.
+Print the array after deletion.
+INPUT : 2 4 6 7 8 9 2 1 0 12
+Idex of Element to Delete : 4
+OUTPUT: 2 4 6 7  9 2 1 0 12
+
+Program : 
+port java.util.Scanner;
+
+	public class DeleteElement
+	{
+		public static void main(String[] args)
+		{
+		Scanner sc =new Scanner(System.in);
+		int i,n,pos;
+
+		System.out.println("Enetr size of an index:");
+
+		n=sc.nextInt();
+		int a[]=new int[n];
+		System.out.println("Input:");
+		for(i=0;i<n;i++)
+		{
+			a[i] = sc.nextInt();
+		}
+
+			
+	System.out.println("Index of element to delete:");
+		pos = sc.nextInt();
+	   		
+	for(i=pos;i<n-1;i++)
+		{
+			a[i]=a[i+1];
+		}
+		n=n-1;
+		
+	System.out.println("Output:");
+		for(i=0;i<n;i++) 
+		{
+			System.out.print(" "+a[i]);
+		}
+	}
+}
+        
+    
+
+Output : 
+
+ 
+
+2.	Write a Java program to accept 10 elements in an integer array of size 15. Then accept an index and element. The element should be inserted in the given index. 
+INPUT : 1 2 3 4  6 7 8 9 10 11
+Index : 4 Element: 5
+Output: 1 2 3 4 5 6 7 8 9 10 11
+
+Program:
+// Function to insert x in arr at position pos 
+	    public static int[] insertX(int n, int arr[], 
+	                                int x, int pos) 
+	    { 
+	        int i; 
+	  
+	        // create a new array of size n+1 
+	        int newarr[] = new int[n + 1]; 
+	  
+	        // insert the elements from 
+	        // the old array into the new array 
+	        // insert all elements till pos 
+	        // then insert x at pos 
+	        // then insert rest of the elements 
+	        for (i = 0; i < n + 1; i++) { 
+	            if (i < pos - 1) 
+	                newarr[i] = arr[i]; 
+	            else if (i == pos - 1) 
+	                newarr[i] = x; 
+	            else
+	                newarr[i] = arr[i - 1]; 
+	        } 
+	        return newarr; 
+	    } 
+	  
+	    // Driver code 
+	    public static void main(String[] args) 
+	    { 
+	  
+	        int n = 10; 
+	        int i; 
+	  
+	        // initial array of size 10 
+	        int arr[] 
+	            = { 1, 2, 3, 4, 6, 7, 8, 9, 10,11 }; 
+	  
+	        // print the original array 
+	        System.out.println("Input:"
+	                           + Arrays.toString(arr)); 
+	  
+	        // element to be inserted 
+	        int x = 5; 
+	        System.out.println("Element:"+x);
+	        // position at which element 
+	        // is to be inserted 
+	        int pos = 4; 
+	        System.out.println("Index:"+pos);
+	  
+	        // call the method to insert x 
+	        // in arr at position pos 
+	        arr = insertX(n, arr, x, pos); 
+	  
+	        // print the updated array 
+	        System.out.println("Output:"+ Arrays.toString(arr)); 
+	    } 
+	} 
+
+
+Output:
+ 
+
+
+
+
+Note: For question 1 and 2, need to do shifting of elements in the array.
+3.	Perform Right shift in an array of n elements. N should be accepted from user.
+Input : 1 2 3 4 5 6 7 8 9 10
+N=3
+Output: 8 9 10 1 2 3 4 5 6 7 
+Program:
+import java.util.Scanner;
+public class ArrayRightShift
+{
+ public static void main(String[]mari)
+ {
+   Scanner scan = new Scanner(System.in);//taking input from the user using scanner class
+   System.out.print("Enter the size of array: ");
+   //taking array size
+   int size = scan.nextInt();
+   int[]arr = new int[size];
+   
+   System.out.print("Enter the elements of array: ");
+   //loop to accept given elements
+   for(int i = 0; i < size; i++)
+   {
+     arr[i]=scan.nextInt();
+   }
+   System.out.print("Enter number of times to be shifted: ");
+  
+   int shift = scan.nextInt();
+   int[] temp = new int[size];
+   int j = 0;
+   //loop to shifting the number of times based on given input
+   while(shift >= size)
+   {
+     shift = shift - size;
+   }
+   for(int i = 0; i < size; i++)
+   {
+     if(size - shift + i >= size)
+     {
+       temp[i] = arr[j];
+       j = j + 1;
+     }
+     else
+     {
+       temp[i] = arr[size - shift + i];
+     }
+   }
+   System.out.print("The shifted array is: ");
+   for(int i = 0; i < size; i++)
+   {
+     System.out.print(temp[i]+" ");
+   }
+   System.out.println();
+ }
+}
+Output :
+
+ 
+
+
+4.	 You are given two numbers N and M. Write a program to print the absolute difference between two numbers i.e. |N−M|.
+ You also need to implement the following validation checks in your code–
+•	The result can’t be a negative number although the user can input negative number, if so, please display appropriate error message.
+•	The input should not be alphabet or any special character, if so, please display appropriate error message.
+Program :
+import java.util.Scanner;
+import java.util.InputMismatchException;
+      public class AbsoluteDifference {
+
+  public static void main(String[] args) {
+           
+     try{
+     System.out.println("enter  input numbers:");
+     Scanner sc=new Scanner(System.in);//taking input from the user bu using scanner class
+     
+      int x=sc.nextInt();
+     int y=sc.nextInt();
+     //Absolute difference logic
+     if(x>0 && y>0){
+     int c=x-y;
+    int a=Math.abs(c);
+     System.out.println("Absolute difference is:"+a);
+     }
+     //loop to consider positive number only
+     else if(x<0||y<0){
+         System.out.println("Enter Positive numbers only");
+     }
+     //exception handling if give input is other than numbers
+     }catch(InputMismatchException e){
+         System.out.println("Enter only numbers");
+     }
+     }
+     }
+Output : 
+ 
+
+ 
+
+ 
+
+
+
+5.	  
+Write a program to print the factorial of a number by defining a method named 'Factorial'.
+Factorial of any number n is represented by n! and is equal to 1*2*3*....*(n-1)*n. E.g.-
+4! = 1*2*3*4 = 24
+3! = 3*2*1 = 6
+2! = 2*1 = 2
+Also,
+1! = 1
+0! = 0
+
+Program : 
+import java.util.Scanner;
+public class Factorial {
+    public static int factorial(int n) {
+        int fact=1;
+        //logic if n = and 1
+    if (n == 0 && n==1) {
+        fact=1;
+    }
+    //logic to except 0 and 1
+    for(int i=1;i<=n; i++){
+      fact=fact*i; 
+}
+System.out.print("fact="+fact);
+return fact;
+}
+    public static void main(String args[])
+    {
+        Scanner sc=new Scanner(System.in);//taking input from the user using scanner
+        int a=sc.nextInt();
+     factorial(a);
+    }
+}
+Output : 
+
+ 
+  
+
+
+
+6.Twenty-five numbers are entered from the keyboard into an array. The number to be searched is entered through the keyboard by the user. Write a program to find if the number to be searched is present in the array and if it is present, display the number of times it appears in the array.
+Program:
+import java.util.Scanner;
+public class CountArrayElement 
+{
+    public static void main(String[] args) 
+    {
+        int n, pos, x;  int count=0; int i=0; 
+        Scanner s = new Scanner(System.in);//getting input usin Scanner class
+        System.out.println("Enter no. of elements you want in array:");
+         n=s.nextInt();
+         
+        int a[] = new int[n];
+        System.out.println("Enter all the elements:");
+        //loop to take all the elements
+        for( i = 0; i < n; i++)
+        {
+            a[i] = s.nextInt();
+            System.out.print(a[i]+" ");
+            
+        }
+        //loop for searching
+        System.out.println("enter searching element");
+        int ele=s.nextInt();
+        for( i = 0; i <n; i++)
+        {
+            if(ele==a[i]){
+                count++;
+                
+            }
+        
+        }
+        
+        System.out.println("count="+count);
+                           
+    }
+}
+
+Output : 
+ 
+
+7.	Write a program to accept a decimal no from user and convert it into binary and display.
+Program:
+import java.util.Scanner;
+public class DecimalToBinary
+{
+   public static void main(String[] args) 
+    {
+        int n, count = 0, a;
+        String x = "";
+        Scanner s = new Scanner(System.in);//taking input by using scanner class
+        n = s.nextInt();
+        while(n > 0)
+        {//logic to convert binary to decimal
+            a = n % 2;
+            if(a == 1)
+            {
+                count++;
+            }
+            x = a + "" + x;
+            n = n / 2;
+        }
+        System.out.println("Binary number:"+x);
+    }
+}
+
+
+Output:
+ 
+
+
+8.	WAP in C to display below pattern :
+    ABCDEFEDCBA
+    ABCDE   EDCBA
+    ABCD        DCBA
+    ABC             CBA
+    AB                  BA
+    A                       A
+
+
+Program:
+
+public class ABCPattern {
+    public static void main(String args[]) {
+      int i=0;
+      int n=70;
+     for(i=n; i>=65; i--)
+     {//loop to print pattern
+         for(int j=65; j<=n; j++)
+         {
+             if(j>i)
+             {
+                 System.out.print(" ");
+             }
+            else{
+                 if(j==n)
+                 {
+                     continue;
+                 }
+                 else
+             {
+             char c=(char)j;
+             System.out.print(c);
+             }
+             }
+             }
+         if(i==n){
+             System.out.print("F");
+         }
+         for(int k=n; k>=65; k--){
+         if(k>i||k==n){
+             if(k==n){
+             continue;
+             }
+             System.out.print(" ");
+         }       
+            else{
+             char d=(char)k;
+             System.out.print(d);
+                 }   
+     }
+      //to print each line pattern in next line
+     System.out.println();
+}
+        
+    }
+}
+
+
+Output : 
+
+ 
+
+
+
+9.WAP in C to to print below pattern : (Accept no of rows from user and print).
+
+             1
+            1 1
+           1 2 1
+          1 2 2 1
+         1 2 3 2 1
+        1 2 3 3 2 1
+       1 2 3 4 3 2 1
+      1 2 3 4 4 3 2 1  
+
+Program:
+
+int main()
+{
+    int i, j;
+    for(i=1;i<=8;i++)
+    {
+      for(j=8;j>i;j--)
+        printf("  ");
+      for(j=1;j<=i;j++)
+          printf("%d ",j);
+      for(j=j-2;j>=1;j--)
+          printf("%d ",j);
+      printf("\n");
+    }
+    return 0;
+}
+
+Output:
+ 
+ 
+10.WAP in C to print of each alphabet in string. Assume that user enters small case string only.
+EG
+INPUT : hello
+OUTPUT: h  1
+                 e  1
+                  l    2
+                 o  1
+Program: 
+public class StringHello  {
+    static final int MAX_CHAR = 256; 
+  
+    static void getOccuringChar(String str) 
+    { 
+        // Create an array of size 256 i.e. ASCII_SIZE 
+        int count[] = new int[MAX_CHAR]; 
+  
+        int len = str.length(); 
+  
+        // Initialize count array index 
+        for (int i = 0; i < len; i++) 
+            count[str.charAt(i)]++; 
+  
+        // Create an array of given String size 
+        char ch[] = new char[str.length()]; 
+        for (int i = 0; i < len; i++) { 
+            ch[i] = str.charAt(i); 
+            int find = 0; 
+            for (int j = 0; j <= i; j++) { 
+  
+                // If any matches found 
+                if (str.charAt(i) == ch[j])  
+                    find++;                 
+            } 
+  
+            if (find == 1)  
+                System.out.println(
+                 str.charAt(i) + " " + count[str.charAt(i)]);             
+        } 
+    } 
+    public static void main(String[] args) 
+    { 
+        
+        String str = "hello"; 
+        getOccuringChar(str); 
+    } 
+} 
+Output:
+
+ 
+
+ 
+11.Accept values in 3X3 matrix. Transpose it and display.
+
+Program:
+
+import java.util.Scanner;
+public class Transpose
+{
+    public static void main(String args[]) //main method 
+    {
+	int i, j;
+	System.out.println("Enter total rows and columns: ");
+	Scanner s = new Scanner(System.in);
+	//taking input from the user
+	int row = s.nextInt();
+	int column = s.nextInt();
+	int array[][] = new int[row][column];
+	System.out.println("Enter matrix:");
+ 	for(i = 0; i < row; i++)
+  	{
+   	    for(j = 0; j < column; j++) 
+     	    {
+        	array[i][j] = s.nextInt();
+        	System.out.print(" ");
+            }//end of inner for loop
+  	}//end of outer for loop
+	System.out.println("The above matrix before Transpose is ");
+  	for(i = 0; i < row; i++)
+  		//logic for before transpose
+    	{
+      	    for(j = 0; j < column; j++)
+            {
+          	System.out.print(array[i][j]+" ");
+            }//end of inner for loop
+            System.out.println(" ");
+        }//end of outer for loop
+ 	System.out.println("The above matrix after Transpose is ");
+  	for(i = 0; i < column; i++)//logic for transpose
+    	{
+      	    for(j = 0; j < row; j++)
+            {
+                System.out.print(array[j][i]+" ");
+            }//end of inner for loop
+            System.out.println(" ");
+        }//end of outer for loop
+    }//end of main method
+}//end of class
+Output:
+ 
+
+
+12.Write a program to pick up the largest number from any 5 row by 5 column matrix.
+Program:
+
+package Assignment3;
+public class LargestOfArray 
+{     
+    final static int N = 5; 
+    final static int  M = 5; 
+    // Function to find max element 
+    // mat[][] : 2D array to find max element 
+    static int findMax(int mat[][]) 
+    { 
+        // Initializing max element as INT_MIN 
+        int maxElement = Integer.MIN_VALUE; 
+        // checking each element of matrix 
+        // if it is greater than maxElement, 
+        // update maxElement 
+        for (int i = 0; i < N; i++) { 
+            for (int j = 0; j < M; j++) { 
+                if (mat[i][j] > maxElement) { 
+                    maxElement = mat[i][j]; 
+                } 
+            } 
+        } 
+        // finally return maxElement 
+        return maxElement; 
+    }  
+    // Driver code 
+    public static void main(String args[]) 
+    { 
+           // matrix 
+        int mat[][] = { { 1, 2, 3, 4, 5 }, 
+                          { 25, 6, 7, 8, 9 }, 
+                          { 9, 10, 11, 12 , 29}, 
+                          { 13, 14, 15, 16, 28 }, 
+                          {17,18,19,20, 21}
+                          
+        			 }; 
+        System.out.println("Largest Number of Matrix is " +findMax(mat)) ; 
+    } 
+    
+}  
+
+Output :
+  
+
+13.A cashier has currency notes of denominations 10, 50 and 100. If the amount to be withdrawn is input through the keyboard in hundreds, find the total number of currency notes of each denomination the cashier will have to give to the withdrawer.  
+
+Example:
+Input : 
+Amount : 280
+Output:   100    X     2
+                  50     X    1      
+                  10     X     3
+Program : 
+import java.util.Scanner;
+public class Cashier
+{
+	public static void main(String[] args)
+	{
+		Scanner sc = new Scanner(System.in);//taking input from user using scanner
+		System.out.println("Please Enter amount");
+		int Amount = sc.nextInt();
+		System.out.println( "100 *" + Amount / 100);// toget 100's
+		System.out.println( "50 *" +(Amount % 100) / 50);//to get 50's
+		System.out.println("10 * " +(((Amount % 100) % 50) / 10));//to ger 10's
+						
+	}
+
+}
+
+Output : 
+
+ 
+
+
+
+
+
+14.If a five-digit number is input through the keyboard, write a program to print a new number by adding one to each of its digits. For example if the number that is input is 12391 then the output should be displayed as 23402 
+
+Program : 
+import java.util.Scanner;
+public class Adding5Digit 
+{
+	public static void main(String[] args)
+	{
+	long r,temp,sum=0,i,temp_sum=0;
+	Scanner sc = new Scanner(System.in);
+	System.out.println("Enter a 5 digit Number");
+	int num = sc.nextInt();
+	System.out.println("The number after adding one digit to each");
+	while(num!=0)
+	{//logic to get each digit
+		r=num%10;
+		temp=r+1;
+		if(temp==10)
+		temp=0;
+		num=num/10;
+		sum=(sum*10)+temp;
+	}
+		while(sum!=0)
+	{//logic to add each digit to number
+		i=sum%10;
+		sum=sum/10;
+		temp_sum=(temp_sum*10)+i;
+	}
+	System.out.println(temp_sum);
+
+	}
+}
+Output : 
+ 
+
+
+
+15.A library charges a fine for every book returned late. For first 5 days the fine is 50 paise, for 6-10 days fine is one rupee and above 10 days fine is 5 rupees. If you return the book after 30 days your membership will be cancelled. Write a program to accept the number of days the member is late to return the book and display the fine or the appropriate message.  
+
+Program :
+import java.util.Scanner;
+public class Library {
+	public static void main(String[] args)
+	{
+	Scanner sc = new Scanner(System.in);//taking input from user using scanner class
+	System.out.println("Enter Number Of Days");
+	int days = sc.nextInt();
+	if(days<=5)
+		System.out.println("Fine is 50 paise");
+else    if(days>5&&days<=10)
+	System.out.println("Fine is 1 rupee");
+    else if(days>10&&days<=30)
+    	System.out.println("Fine is 5 rupee");
+else    if(days>30)
+	System.out.println("Membership cancelled");
+
+	}
+
+}
+
+
+
+Output :                 
+                
+
+ 
+
+ 
+
+ 
+
+
