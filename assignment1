@@ -1,0 +1,481 @@
+Q1  Write a method called toMilesPerHour that has 1 parameter of type double with the name KilometersPerHour. This method needs to return the rounded value of the calculation of type long.
+If the parameter kilometersPerHour is less than 0, the method toMilesPerHour needs to return -1 to indicate an invalid value. Otherwise calculate the value of miles per hour, round it and return it. 
+Example toMilesPerHour(10.25) --should return value 6.
+Program:
+Public class SpeedConverter
+	{
+	    public static long toMilesPerHour (double kilometersPerHour)
+	    {
+	        if(kilometersPerHour < 0) {
+	            return -1;
+	        }
+	        return Math.round(kilometersPerHour / 1.609);
+	    }
+	    public static void printConversion (double kilometersPerHour)
+	    {
+	        if(kilometersPerHour < 0)
+	        {
+	            System.out.println("Invalid Value");
+	        } else
+	        {
+	            long milesPerHours = toMilesPerHour(kilometersPerHour);
+	            System.out.println(kilometersPerHour + " km/h = "+ milesPerHours +" mi/h");
+	        }
+	    }
+	
+		public static void main(String[] args)
+	    {
+			double kilometersPerHour = 10.25;
+			long milesPerHours=100;
+			System.out.print(kilometersPerHour + " km/h = ");
+			System.out.print(""+toMilesPerHour(kilometersPerHour));
+			
+	    }
+	}
+
+
+
+
+0utput:
+ 
+
+Q2. Write a method called printMegaBytesAndKiloBytes that has 1 parameter of type int with the name kiloBytes.
+The method should not return anything(void) and it needs to calculate the megabytes and remaining kilobytes from the kilobytes parameter.
+Then it needs to print a message in the format “XX KB = YY MB and ZZ KB”.
+If the parameter kiloBytes is less than 0 then print the text “Invalid value”.
+Examples: printMegaBytesAndKiloBytes(2500) -> should print “ 2500 KB = 2 MB and 452 KB ”.
+Program:
+public class Mega
+	{
+		public static void main(String[] args){
+		
+		
+		printMegaBytesAndKiloBytes(-1024);
+	
+			
+			
+		}
+		
+		public static void printMegaBytesAndKiloBytes (int kiloBytes){
+		    if (kiloBytes < 0){
+		        System.out.println("Invalid Value");
+		    } else {
+		    int inMegaBytes = kiloBytes / 1024 ;
+		    int remainingKiloBytes = kiloBytes % 1024 ;
+		    String result = kiloBytes + " KB " + "= " + inMegaBytes + " MB " + "and " + remainingKiloBytes + " KB";
+		    System.out.println(result);
+		    } 
+		}
+	}
+
+	
+	
+	
+	
+	
+
+
+
+
+Output:
+
+ 
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+Q3 Write a method areEqualBythreeDecimalPlaces with two parameters of type double.
+The method should return bollean and it needs to return true if two double numbers are the same up to three 
+decimal places. Otherwise return false
+program:
+
+public class Program3
+	{
+		/* Write a method areEqualByThreeDecimalPlaces with two parameters of type double.
+	
+	
+			public static void main(String[] args) {
+			
+				System.out.println(areEqualByThreeDecimalPlaces(-3.1034,-3.1035));
+			}
+			public static boolean areEqualByThreeDecimalPlaces(double firstNumber, double secondNumber){
+				// casting as int is done to make sure numbers after decimal point get deleted.
+				// more advanced java libraries are available to perform this function
+				
+				if ( (int) (firstNumber * 1000) == (int) (secondNumber * 1000) ){
+					return true;
+				}
+				else {
+					return false;
+				}
+				
+			}
+		
+	}
+
+Output:
+ 
+
+Q4. Write a method printYearsAnd Days with parameter of type Long named minutes.
+The method should not return anything(void) and it needs to calculate the years and days from the minutes parameter.
+If the parameter is less than 0 , print “Invalid Value”.
+Otherwise it will print “XX min = YY y and ZZ d”.
+Example: printYearsAndDays(525600) -> Should print “525600 min = 1 y and 0 d”.
+
+program:
+import java.util.Scanner;
+	public class Year {
+	
+	    public static void main(String[] Strings) {
+	
+	
+	        double minutesInYear = 60 * 24 * 365;
+	
+	        Scanner input = new Scanner(System.in);
+	
+	        System.out.print("Input the number of minutes: ");
+	
+	        double min = input.nextDouble();
+	
+	        long years = (long) (min / minutesInYear);
+	        int days = (int) (min / 60 / 24) % 365;
+	
+	        System.out.println((int) min + " minutes is approximately " + years + " years and " + days + " days");
+	    }
+	}
+
+Output:
+
+ 
+
+Q5 Write a method printEqualwith 3 parameters of type int . The method should not return anything(void).
+If one of the parameters is less than 0 , print “invalid Value”.
+If all the numbers are equal print “All numbers are equal”
+If all the numbers are different print “All the numbers are different”
+Otherwise print “Neither all are equal or different”
+Program:
+
+public class Program
+	{
+		public static void main(String[] args) {
+			printEqual(1,2,3);	
+		}
+		public static void printEqual(int firstN, int secondN, int thirdN){
+		    if (firstN < 0 || secondN < 0 || thirdN < 0){
+		        System.out.println("Invalid Value");
+		    }
+		    else if (firstN == secondN && firstN == thirdN && secondN == thirdN) {
+		    	System.out.println("All numbers are same");
+		    	}
+		    else {
+		        System.out.println("Numbers are different");
+		    }
+		        
+		    
+		}
+		}
+
+
+
+
+
+
+
+Output:
+
+ 
+
+
+Q6 Write a method named hasSharedDigit with two parameters of type int.
+Each number should be within the range of 10 and 99 inclusive. If the number is not in range method should return false.
+The method should return true if there is a digit that appears in both the numbers such as 12 and 23 . Otherwise the method should return false.
+
+Program:
+import java.io.*; 
+  
+class Numbers  
+{ 
+    // Function to check whether n is a good number and doesn't contain 
+    // digit 'd' 
+    static boolean isValid(int n, int d) 
+    { 
+        // Get last digit and initialize sum from right side 
+        int digit = n%10; 
+        int sum = digit; 
+  
+        // If last digit is d, return 
+        if (digit == d) 
+        return false; 
+  
+        // Traverse remaining digits 
+        n /= 10; 
+        while (n>0) 
+        { 
+            // Current digit 
+            digit = n%10; 
+      
+            // If digit is d or digit is less than or 
+            // equal to sum of digits on right side 
+            if (digit == d || digit <= sum) 
+                return false; 
+  
+            // Update sum and n 
+                else
+                { 
+                    sum += digit; 
+                    n /= 10; 
+                } 
+        } 
+    return true; 
+    } 
+      
+    // Print Good numbers in range [L, R] 
+    static void printGoodNumber(int L, int R, int d) 
+    { 
+        // Traverse all numbers in given range 
+        for(int i=L;i<=R;i++) 
+        { 
+            // If current numbers is good, print it 
+            if(isValid(i, d)) 
+                System.out.print(i+" "); 
+        } 
+    } 
+      
+    // Driver program 
+    public static void main (String[] args)  
+    { 
+        int L = 10, R = 99, d = 2; 
+          
+        // Print good numbers in [L, R] 
+        printGoodNumber(L, R, d); 
+    } 
+} 
+Output:
+
+ 
+
+	
+
+
+
+
+
+Q7 Write a program to find the duplicate elements in an array?
+Program:
+public class DuplicateElement {  
+	    public static void main(String[] args) {      
+	          
+	        //Initialize array   
+	        int [] arr = new int [] {1, 2, 3, 4, 2, 7, 8, 8, 3};   
+	          
+	        System.out.println("Duplicate elements in given array: ");  
+	        //Searches for duplicate element  
+	        for(int i = 0; i < arr.length; i++) {  
+	            for(int j = i + 1; j < arr.length; j++) {  
+	                if(arr[i] == arr[j])  
+	                    System.out.println(arr[j]);  
+	            }  
+	        }  
+	    }  
+	}
+ 
+Output:
+
+  
+
+
+	
+Q8  Write a Java Program to Sort the elements of an array in Ascending order?
+import java.util.Arrays;
+	import java.util.Scanner;
+	
+	public class SortAscending1 {
+		private static Scanner sc;
+		public static void main(String[] args) 
+		{
+			int Size, i;
+			sc = new Scanner(System.in);
+		 
+			System.out.print(" Please Enter Number of elements in an array : ");
+			Size = sc.nextInt();	
+			
+			int [] a = new int[Size];
+			
+			System.out.print(" Please Enter " + Size + " elements of an Array  : ");
+			for (i = 0; i < Size; i++)
+			{
+				a[i] = sc.nextInt();
+			}
+			
+			Arrays.sort(a);
+			
+			System.out.println("\n Result of a Sorted Array :  ");
+			for (int Number: a)
+			{
+				System.out.print(Number + "  ");
+			}
+		}
+	}
+Output:
+
+ 
+
+	
+	
+	
+Q9 Write a Java Program to print the following pattern 
+5432*
+543*1
+54*21
+5*321
+*4321
+	
+Program:
+public class Main{  
+	  public static void main(String []args){  
+	         int i,j,lines=5;  
+	    for(i=1;i<=lines;i++){// this loop is used to print the lines  
+	       for(j=lines;j>=1;j--){// this loop is used to print numbers in a line  
+	           if(j!=i)  
+	            System.out.print(j);  
+	            else  
+	             System.out.print("*");  
+	    }   
+	    System.out.println("");  
+	    }  
+	     }  
+	} 
+
+Output: 
+
+ 
+
+Q10 Write a method called numberToWords with one int parameter named number. The method should print out the passed number using words for the digit. Make Use of switch case.
+Forexample numberToWords(123) should print “onw two three”.
+(1000) should print “one zero zero zero”.
+Program:
+import java.util.Scanner;
+	
+	public class NumberToWords {
+	
+		public static void main(String[] args) {
+			//Set up scanner.
+			Scanner kb = new Scanner(System.in);
+			
+			//Ask for a 4 digit integer.
+			System.out.println("Enter a 4 digit number.");
+			
+			//Store 4 digit number into a variable
+			int number = kb.nextInt();
+			
+			//Seperate number into digits.
+			int digit4 = number%10;
+			number = number/10;
+			int digit3 = number%10;
+			number = number/10;
+			int digit2 = number%10;
+			number = number/10;
+			int digit1 = number%10;
+			number = number/10;
+			
+			//Set up a switch statement to read through the number.
+			switch (digit1)
+			{
+			case 1: System.out.print("One ");break;
+			case 2: System.out.print("Two "); break;
+			case 3: System.out.print("Three "); break;
+			case 4: System.out.print("Four "); break;
+			case 5: System.out.print("Five "); break;
+			case 6: System.out.print("Six "); break;
+			case 7: System.out.print("Seven "); break;
+			case 8: System.out.print("Eight "); break;
+			case 9: System.out.print("Nine "); break;
+			case 0: System.out.print("Zero "); break;
+			default: System.out.print(""); break;
+			}
+			switch (digit2)
+			{
+			case 1: System.out.print("One ");break;
+			case 2: System.out.print("Two "); break;
+			case 3: System.out.print("Three "); break;
+			case 4: System.out.print("Four "); break;
+			case 5: System.out.print("Five "); break;
+			case 6: System.out.print("Six "); break;
+			case 7: System.out.print("Seven "); break;
+			case 8: System.out.print("Eight "); break;
+			case 9: System.out.print("Nine "); break;
+			case 0: System.out.print("Zero "); break;
+			default: System.out.print(""); break;
+			}
+			switch (digit3)
+			{
+			case 1: System.out.print("One ");break;
+			case 2: System.out.print("Two "); break;
+			case 3: System.out.print("Three "); break;
+			case 4: System.out.print("Four "); break;
+			case 5: System.out.print("Five "); break;
+			case 6: System.out.print("Six "); break;
+			case 7: System.out.print("Seven "); break;
+			case 8: System.out.print("Eight "); break;
+			case 9: System.out.print("Nine "); break;
+			case 0: System.out.print("Zero "); break;
+			default: System.out.print(""); break;
+			}
+			switch (digit4)
+			{
+			case 1: System.out.print("One ");break;
+			case 2: System.out.print("Two "); break;
+			case 3: System.out.print("Three "); break;
+			case 4: System.out.print("Four "); break;
+			case 5: System.out.print("Five "); break;
+			case 6: System.out.print("Six "); break;
+			case 7: System.out.print("Seven "); break;
+			case 8: System.out.print("Eight "); break;
+			case 9: System.out.print("Nine "); break;
+			case 0: System.out.print("Zero "); break;
+			default: System.out.print(""); break;
+			}
+		}
+	
+	}
+
+
+
+
+
+
+
+
+
+
+
+Output:
+
+ 
+
+ 
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	 
+
