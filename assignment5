@@ -1,0 +1,399 @@
+1.Class Division
+Write a program to calculate the division/class obtained by the student when the marks obtained by a student in 5 different subjects are given as inputs.
+ 
+The student gets a division/class as per the following rules:
+Percentage above or equal to 60 - “First Class”.
+Percentage between 50 and 59 - “Second Class”.
+Percentage between 40 and 49 - “Third Class”.
+Percentage less than 40 - “Failed”.
+ 
+Sample Input 1:
+41
+45
+46
+40
+41
+Sample Output 1:
+Third Class
+Program:
+import java.util.Scanner;
+
+public class StudentdDivisionClass {
+	
+
+	    public static void main(String args[])
+	    {
+	    	/* This program assumes that the student has 6 subjects,
+	    	 * thats why I have created the array of size 6. You can
+	    	 * change this as per the requirement.
+	    	 */
+	        int marks[] = new int[6];
+	        int i;
+	        float total=0, avg;
+	        Scanner scanner = new Scanner(System.in);
+			
+	        
+	        for(i=0; i<5; i++) { 
+	           System.out.print("Enter Marks of Subject"+(i+1)+":");
+	           marks[i] = scanner.nextInt();
+	           total = total + marks[i];
+	        }
+	        scanner.close();
+	        //Calculating average here
+	        avg = total/5;
+	        System.out.print("The student Grade is: ");
+	        if(avg>=60)
+	        {
+	            System.out.print("First Class");
+	        }
+	        else if(avg>=50 && avg<60)
+	        {
+	           System.out.print("Second Class");
+	        } 
+	        else if(avg>=40 && avg<50)
+	        {
+	            System.out.print("Third Class");
+	        }
+	        else
+	        {
+	            System.out.print("Failed");
+	        }
+	    }
+	}
+
+Output:
+ 
+
+2.Get All Elements
+
+Write a program to get all the elements that are greater than 5 from a given input integer list.
+Display it in the order as present in the array.
+ 
+Print the elements.
+Example:
+Input1: [1,3,7,8,5,13]
+Output1:[7,8,13]
+ 
+
+Sample Input 1:
+6
+1
+3
+7
+8
+5
+13
+Sample Output1:
+7
+8
+13
+Program:
+import java.util.Scanner;
+public class Greater
+{	public static void main(String[] args)
+	{	Scanner sc = new Scanner(System.in);//taking input from the user by using scanner class
+		System.out.println("Enter number of elements you want to enter:");
+		int n = sc.nextInt();
+		int i;
+		int [] a = new int[n];
+		System.out.println("Enter array elements:"+"\t");
+		//taking given elements in array and printing elements
+		  for( i=0;i<n;i++) 
+		  { 
+			  a[i]=sc.nextInt();
+			  System.out.println(a[i] + " "); 
+		  }
+	//loop to print greater than 5
+		  System.out.println("elements that are greater than 5 are:\t");
+		  for(i=0;i<n;i++) 
+		  {
+			  if(a[i]>5)
+			{
+			System.out.print(a[i] +" ");
+			}
+	
+		  }
+	}
+}
+Output:
+ 
+
+ 
+
+3.Arithmetic Operation
+Write a program to perform the user specified arithmethic operation. The program will consist of 3 parameters. First one for specifying the type of operation (+,-,*,/) and the other two are the operands upon which the operation has to be performed. Print the final output.
+ 
+Business Rules:
+ 
+1. The first parameter should have the values as 1,2,3 or 4. If it has any other value other than this, return -1.
+2. The Second and the third parameter should be only positive numbers, else return -2.
+3. If the first parameter is
+ 
+1 --------------- Add the second and third parameter. (second+third)
+ 
+2 --------------- Subtract the second and third parameter.(second-third)
+ 
+3 ---------------- Multiply second and third parameter. .(second*third)
+ 
+4 ---------------- Divide second by third parameter.(second/third)
+
+ 
+
+Assume all outputs are Integers.
+ 
+Refer sample output for formatting specifications.
+ 
+Sample Input 1:
+1
+2
+3
+Sample Output 1:
+5
+Program:
+import java.util.Scanner;
+	public class ArithmeticOperation {
+
+			private static Scanner sc;
+			public static void main(String[] args) 
+			{
+				int Size, i;
+				sc = new Scanner(System.in);
+			 
+		System.out.print(" Please Enter Number of elements in an array : ");
+				Size = sc.nextInt();	
+				
+				int [] a = new int[Size];
+				int [] b = new int[Size];
+				int [] Addition = new int[Size];
+				int [] Subtraction = new int[Size];
+				int [] Multiplication = new int[Size];
+				int [] Division = new int[Size];
+				
+		System.out.print(" Please Enter " + Size + " elements of an Array  : ");
+		
+				for (i = 0; i < Size; i++)
+				{
+					
+					a[i] = sc.nextInt();
+				}  
+		System.out.print(" Please Enter " + Size + " elements of an Array  : ");
+				for (i = 0; i < Size; i++)
+				{
+					b[i] = sc.nextInt();
+				}  
+				for(i = 0; i < Size; i ++)
+				{
+					Addition [i]= a[i] + b[i];
+				    Subtraction [i]= a[i] - b[i];
+				    Multiplication [i]= a[i] * b[i];
+				    Division [i] = a[i] / b[i];
+				  
+				}
+				System.out.println("\nAdd\t Sub\t Multi\t Div");
+				for (i = 0; i < Size; i++)
+				{
+					System.out.print(Addition[i] + " \t ");
+					System.out.print(Subtraction[i] + " \t ");
+					System.out.print(Multiplication[i] + " \t ");
+					System.out.print(Division[i] + " \t ");
+				 
+				    System.out.print("\n");
+				}
+			}
+		}
+
+Output:
+ 
+
+4.Check Sum
+Write program to read a positive int as input and to calculate the sum of the odd digits in the given number. If the sum is odd print “Odd” else print “Even”.
+ 
+Example:
+input = 56895
+Sum = 5 + 9 + 5 = 19 (odd)
+output = Odd
+ 
+Include a class UserProgramCode with a static method checkSum which accepts a positive Integer. 
+Output consists of a String “Odd” if the sum is odd, else print “Even”.
+ 
+Refer sample output for formatting specifications.
+ 
+Sample Input:
+56895
+Sample Output
+Odd
+Program:
+import java.util.Scanner;
+	public class Checksum {
+	  public static void main(String[] args) {
+	    Scanner input = new Scanner(System.in);
+	    int n = input.nextInt();
+	    int summ=0;
+	    while(n>0){
+	      int rem = n%10;
+	      if(rem%2!=0){
+	        summ = summ+rem;
+	 
+	      }
+	     
+	      n = n/10;
+	    }
+	    if(summ%2==0){
+	      System.out.println("Even");
+	    }else{
+	      System.out.println("Odd");
+	    }
+	  }
+	}
+
+Output:
+ 
+
+
+5.Calculate Commission
+ 
+Write a program to calculate the commission on given sales as per the following policy.
+
+If sales is less than Rs. 10000/- no commission.
+If sales is between Rs. 10000/- to Rs. 25000/- commission is 10% of sales.
+If sales is more than Rs. 25000/- then commission is Rs. 500/- plus 8% of sales amount.
+ 
+
+Input and Output format :
+Input consists of float.
+
+ 
+Sample Input 1 :
+11000
+
+Sample Output 1:
+1100
+
+Sample Input 2 :
+-1000
+Sample Output 2 :
+Invalid Input
+Program:
+import java.util.Scanner;
+
+public class Commision {
+	
+	public static void main(String arg[])	
+		{
+		  Scanner sc=new Scanner(System.in);
+		  System.out.print("Enter amount:");
+		 double amount=sc.nextDouble();
+		 if(amount>0) {
+		  System.out.print("Enter commissionPercentage:");
+	          double commissionPercentage=sc.nextDouble();
+		  double commission=(commissionPercentage/100)*amount;  	   
+	      	  System.out.println("Commission amount="+commission); 
+		 }
+		 else
+		 {
+			 System.out.println("Invalid input");
+		 }
+		}
+	}
+Output:
+ 
+
+ 
+
+6.Mr Ram and his family would like to travel from A to E on December 29 by train. They would like to book tickets. Get input from the user for number of persons and depending on the age of the person’s book tickets for birth facility. If age is greater than 50 and lesser than 10 allot lower birth. A person can book only 10 tickets at a time. Book tickets and display with a proper message.
+Do Exception Handling, store and display contents with a proper message.
+
+Program:
+import java.util.Scanner;
+
+public class Booktickets{
+    public static void main(String args[]){
+        System.out.println("enter arrary of elements you want to enter depending on given limit of persons:");
+        Scanner sc=new Scanner(System.in);
+    int n=sc.nextInt();
+    
+    int i;
+    int age[]=new int[n];
+    System.out.print("Enter array Elements depending on the ages:"+"\t"+"\n");
+    for( i=0;i<n; i++){
+         age[i]=sc.nextInt();
+        System.out.print(age[i]+" ");
+        }
+        if(n>10){
+                System.out.println("\nenter only 10 or lessthan 10 people details");
+            }
+            else{
+        for( i=0;i<n; i++){
+        if(age[i]>50){
+            System.out.println("\n"+age[i]+": "+"allot lower birth");
+        }
+        else if(age[i]<10) {
+            System.out.println("\n"+age[i]+": "+"allot lower birth");
+        }
+        else{
+            System.out.println("\n"+age[i]+": "+"allot higher birth");
+        }
+        }
+        }
+        
+        
+    }
+    }
+Output:
+ 
+
+7.Jim got his salary. His salary calculations are as follows.
+From his Basic amount he gets 50% of his basic for house Rent allowances and 75% of his basic as special allowances . If the number of days he worked is 31 he gets 500 extra. Write a program to calculate his gross salary after calculating all his salary split up. Print Invalid Input and terminate the program in the following cases:
+1.	Basic salary is greater than 10000
+2.	Number of working days is greater than 31
+3.	Basic salary is negative
+4.	Number of working days is 0 or negative
+
+Program:
+
+	import java.lang.*;
+	import java.io.*;
+	class Employee
+	{
+		int emp_days;
+		String emp_name;
+		float basic_salary;
+		Employee(int days, String name, float sal)
+		{
+		
+			emp_days=days;
+			emp_name=name;
+			basic_salary=sal;
+			
+		}
+		void display()
+		{
+			float da=basic_salary*15/100;
+			float hra=basic_salary*10/100;
+			
+			float gross_sal=basic_salary+da+hra;
+			System.out.println ("Employee working days= "+emp_days);
+			System.out.println ("Emplyee Name= "+emp_name);
+			System.out.println ("Gross Salary= "+gross_sal);
+		}
+	}
+	public class Grosssalary
+	{
+		public static void main(String args[]) throws IOException
+		{
+			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+			System.out.println ("Enter Employee working days");
+			int days = Integer.parseInt(br.readLine());
+			System.out.println ("Enter Employee Name");
+			String name = br.readLine();
+			System.out.println ("Enter Basic Salary");
+			Float sal = Float.parseFloat(br.readLine());
+			Employee e = new Employee(days, name, sal);
+			e.display();
+		}
+	}	
+
+ Output:
+ 
+
+ 
