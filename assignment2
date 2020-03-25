@@ -1,0 +1,848 @@
+Question 1(Classes & Methods)
+
+Write a class Mathematics and define a method add in it. User polymorphism to overload the add method. Use appropriate example by calling the method in another class.
+Program:
+// Java program for Method overloading 
+	  
+	class Mathematics1 { 
+	  
+	    // Method with 2 parameter 
+	    static int add(int a, int b) 
+	    { 
+	        return a + b; 
+	    } 
+	  
+	    // Method with the same name but 2 double parameter 
+	    static double add(double a, double b) 
+	    { 
+	        return a + b; 
+	    } 
+	} 
+	  
+	public class Main { 
+	    public static void main(String[] args) 
+	    { 
+	  
+	        System.out.println(Mathematics1.add(2, 4)); 
+	  
+	        System.out.println(Mathematics1.add(5.5, 6.3)); 
+	    } 
+	} 
+
+Output:
+ 
+
+Question 2(Java Basics)
+You are given two numbers N and M. Write a program to print the absolute difference between two numbers i.e. |N−M|.
+ You also need to implement the following validation checks in your code–
+•	The result can’t be a negative number although the user can input negative number, if so, please display appropriate error message.
+The input should not be alphabet or any special character, if so, please display appropriate error message
+Program:
+import java.lang.*;
+	 import java.util.Scanner;
+	 import java.util.InputMismatchException;
+	 
+
+	       public class Absolutediff {
+
+	   public static void main(String[] args) {
+	       
+	      // get some integers to find their absolute values
+	      
+	      try{
+	      System.out.println("enter  input numbers:");
+	      Scanner sc=new Scanner(System.in);
+	      
+	       int x=sc.nextInt();
+	      int y=sc.nextInt();
+	      
+	      if(x>0 && y>0){
+	      int c=x-y;
+	     int a=Math.abs(c);
+	      System.out.println("absolute difference is:"+a);
+	      }
+	      else if(x<0||y<0){
+	          System.out.println("enter Positive numbers only");
+	      }
+	      
+	      }catch(InputMismatchException e){
+	          System.out.println("enter only numbers");
+	      }
+	      }
+	      }
+Output:
+ 
+
+ 
+Question 3 (Java basics)
+Let us assume a person wants to enter number (in certain range for eg 0-99). The program must read the number and display the result in words.
+For e.g.  Input – 7       output – Seven
+  Input – 35     output – Thirty-Five
+Program:
+import java.util.Scanner;
+	import java.util.InputMismatchException;
+
+	public class Numbertoword {
+
+
+
+	        public static void main(String[] args) {
+	            try{
+	            int number = 0;
+	            Scanner scanner = new Scanner(System.in);
+	            System.out.println("Please type a number between 0 and 99 OR type -1 to exit:  ");
+	            number = scanner.nextInt();
+	            
+	                if(number==0){
+	                        System.out.println("NUMBER AFTER CONVERSION:\tZERO");
+	                    }
+	                else if(number>=0 && number<=99){
+	                     
+	                        System.out.println("NUMBER AFTER CONVERSION:\t");
+	                       
+	                        numberToWord((number % 100), " ");
+	                    }
+
+	                else{
+	                    System.out.print("Enter two digit number only");
+	                }
+	                
+	        }catch(InputMismatchException e){
+	            System.out.println("only numbers are allowed");
+	        }
+	        }
+	        
+
+	        public static void numberToWord(int num, String val) {
+	            String ones[] = {" ", " ONE", " TWO", " THREE", " FOUR", " FIVE", " SIX", " SEVEN", " EIGHT", " NINE"
+	            };
+	            String tens[] = {" ", " ", " TWENTY", " THIRTY", " FOURTY", " FIFTY", " SIXTY", " SEVENTY", " EIGHTY", " NINETY"};
+	            if (num > 19) {
+	                System.out.print(tens[num / 10] + " " + ones[num % 10]);
+	            } else {
+	                System.out.print(ones[num]);
+	            }
+	            if (num > 0) {
+	                System.out.print(val);
+	            }
+	        
+	        }
+}
+
+
+Output:
+ 
+
+Question 4(Array)
+Write a program to multiply two matrices based on the following requirements:
+
+You also need to implement the following validation check in your code–
+•	User must input both the matrix. 
+•	Columns of first matrix must be same as the number of rows of the second matrix.
+•	Output should be printed in matrix format for e.g.
+1	3	5
+6	8	9
+5	3	6
+Program:
+import java.util.Scanner;
+	 
+	 public class Matrixmultiplication
+	{
+	  public static void main(String args[])
+	  {
+	    int m, n, p, q, sum = 0, c, d, k;
+	 
+	    Scanner in = new Scanner(System.in);
+	    System.out.println("Enter the number of rows and columns of first matrix");
+	    m = in.nextInt();
+	    n = in.nextInt();
+	 
+	    int first[][] = new int[m][n];
+	 
+	    System.out.println("Enter elements of first matrix");
+	 
+	    for (c = 0; c < m; c++)
+	      for (d = 0; d < n; d++)
+	        first[c][d] = in.nextInt();
+	 
+	    System.out.println("Enter the number of rows and columns of second matrix");
+	    p = in.nextInt();
+	    q = in.nextInt();
+	 
+	    if (n != p)
+	      System.out.println("The matrices can't be multiplied with each other.");
+	    else
+	    {
+	      int second[][] = new int[p][q];
+	      int multiply[][] = new int[m][q];
+	 
+	      System.out.println("Enter elements of second matrix");
+	 
+	      for (c = 0; c < p; c++)
+	        for (d = 0; d < q; d++)
+	          second[c][d] = in.nextInt();
+	 
+	      for (c = 0; c < m; c++) {
+	        for (d = 0; d < q; d++) {
+	          for (k = 0; k < p; k++)
+	            sum = sum + first[c][k]*second[k][d];
+	 
+	          multiply[c][d] = sum;
+	          sum = 0;
+	        }
+	      }
+	 
+	      System.out.println("Product of the matrices:");
+	 
+	      for (c = 0; c < m; c++) {
+	        for (d = 0; d < q; d++)
+	          System.out.print(multiply[c][d]+"\t");
+	 
+	        System.out.print("\n");
+	      }
+	    }
+	  }
+	}
+
+Output:
+ 
+
+Question 7(Looping Concepts)
+ Write a Java program to add two binary numbers.  Input Data:
+Input first binary number: 10
+Input second binary number: 11
+Expected Output
+Sum of two binary numbers: 101
+
+Program:
+import java.util.Scanner;
+	import java.util.InputMismatchException;
+	public class Binarynumber {
+	   public static void main(String[] args)
+	   {
+	       try
+	       {
+		long b1, b2;
+		int i = 0, carry = 0;
+		int[] sum = new int[10];
+		Scanner scanner = new Scanner(System.in);
+		System.out.print("Enter first binary number: ");
+		b1 = scanner.nextLong();
+		System.out.print("Enter second binary number: ");
+		b2 = scanner.nextLong();
+		while (b1 != 0 || b2 != 0) 
+		{
+			sum[i++] = (int)((b1 % 10 + b2 % 10 + carry) % 2);
+			carry = (int)((b1 % 10 + b2 % 10 + carry) / 2);
+			b1 = b1 / 10;
+			b2 = b2 / 10;
+		}
+		if (carry != 0) 
+		{
+			sum[i++] = carry;
+		}
+		--i;
+		System.out.print("Output: ");
+		while (i >= 0) {
+			System.out.print(sum[i--]);
+		}
+		System.out.print("\n");  
+	   }
+	   catch(InputMismatchException im)
+	    {
+	        System.out.println();
+	        
+	    }
+	}
+	}
+
+
+Output:
+
+
+ 
+
+
+Question 10(Classes and Methods)
+Write a program that would print the information (name, year of joining, salary, address) of three employees by creating a class named 'Employee'. The output should be as follows:
+Name        Year of joining        Address
+Robert            1994                64C- WallsStreat
+Sam                2000                68D- WallsStreat
+John                1999                26B- WallsStreat
+
+Program:
+
+	public class Employee{
+	    public String Name;
+	    private long Yearofjoining;
+	    
+	    public String Address;
+	    Employee(){}
+	    Employee(String name, long yearofjoining,  String address){
+	        Name=name;
+	        Yearofjoining=yearofjoining;
+	        
+	        Address=address;
+	    }
+	    
+	    public void EmployeeDetails(){
+	        
+	        System.out.println(Name+"\t"+Yearofjoining+"\t\t\t"+Address);
+	         
+	        
+	    }
+	    public static void main(String[] args){
+	        Employee e1=new Employee("Robert",1994,"64C-WallStreet");
+	        Employee e2=new Employee("Sam  ",2000,"68D-Wallstreet");
+	        Employee e3=new Employee("John ",1999,"24B-Wallstreet");
+	        System.out.println("Name\t"+"Yearofjoining\t"+"Address");
+	        e1.EmployeeDetails();
+	        e2.EmployeeDetails();
+	        e3.EmployeeDetails();
+	        
+	    }
+	}
+
+Output:
+ 
+
+Question 11(String Handling)
+Write a Java program to counts occurrences of a certain character in a given string.
+Program:
+import java.util.Scanner;
+class Occurences {
+	
+	    static final int MAX_CHAR = 256; 
+	  
+	    static void getOccuringChar(String str) 
+	    { 
+	        // Create an array of size 256 i.e. ASCII_SIZE 
+	        int count[] = new int[MAX_CHAR]; 
+	  
+	        int len = str.length(); 
+	  
+	        // Initialize count array index 
+	        for (int i = 0; i < len; i++) 
+	            count[str.charAt(i)]++; 
+	  
+	        // Create an array of given String size 
+	        char ch[] = new char[str.length()]; 
+	        for (int i = 0; i < len; i++) { 
+	            ch[i] = str.charAt(i); 
+	            int find = 0; 
+	            for (int j = 0; j <= i; j++) { 
+	  
+	                // If any matches found 
+	                if (str.charAt(i) == ch[j])  
+	                    find++;                 
+	            } 
+	  
+	            if (find == 1)  
+	                System.out.println("Number of Occurrence of " + 
+	                 str.charAt(i) + " is:" + count[str.charAt(i)]);             
+	        } 
+	    } 
+	    public static void main(String[] args) 
+	    { 
+	        Scanner sc = new Scanner(System.in); 
+	        String str = "character"; 
+	        getOccuringChar(str); 
+	    } 
+	} 
+
+
+Output:
+ 
+Question 12(String Handling)
+Write a Java program to convert a given String to int, long, float and double.  
+ Sample Output:
+Convert String to int/Integer:
+"1323" as int is 1323 and as Integer is 1323
+
+Convert String to long/Long:
+"13625478965325" as long is 13625478965325 and as Long is 13625478965325
+
+Convert String to float/Float:
+"25.135F" as float is 25.135 and as Float is 25.135
+
+Convert String to double/Double:
+"21.25478254D" as double is 21.25478254 and as Double is 21.25478254
+false
+
+program:
+public class Convertstring {
+	
+		   public static void main(String[] args) {
+		        String STR_TO_INT = "1323";
+		        String STR_TO_LONG = "13625478965325";
+		        String STR_TO_FLOAT = "25.135F";
+		        String STR_TO_DOUBLE = "21.25478254D";
+		        
+		       System.out.println("Convert String to int/Integer:");
+		       Integer toInt1 = Integer.valueOf(STR_TO_INT);
+		       int toInt2 = Integer.parseInt(STR_TO_INT);
+		       System.out.println("\"" + STR_TO_INT + "\"" + " as int is "
+		               + toInt1 + " and as Integer is " + toInt2);
+		                
+		       System.out.println("\nConvert String to long/Long:");
+		       Long toLong1 = Long.valueOf(STR_TO_LONG);
+		       long toLong2 = Long.parseLong(STR_TO_LONG);
+		       System.out.println("\"" + STR_TO_LONG + "\"" + " as long is "
+		               + toLong1 + " and as Long is " + toLong2);
+		       System.out.println("\nConvert String to float/Float:");
+		       Float toFloat1 = Float.valueOf(STR_TO_FLOAT);
+		       float toFloat2 = Float.parseFloat(STR_TO_FLOAT);
+		       System.out.println("\"" + STR_TO_FLOAT + "\"" + " as float is "
+		               + toFloat1 + " and as Float is " + toFloat2);
+		                
+		       System.out.println("\nConvert String to double/Double:");
+		       Double toDouble1 = Double.valueOf(STR_TO_DOUBLE);
+		       double toDouble2 = Double.parseDouble(STR_TO_DOUBLE);
+		       System.out.println("\"" + STR_TO_DOUBLE + "\"" + " as double is "
+		               + toDouble1 + " and as Double is " + toDouble2);
+		   }
+		}
+
+
+Output:
+ 
+
+
+Question 18(Sorting)
+
+Write a Java program to sort an array of given integers using Insertion sort Algorithm. 
+Hint: Insertion sort is a simple sorting algorithm that builds the final sorted array (or list) one item at a time. It is much less efficient on large lists than other algorithms such as quicksort, heapsort, or merge sort.
+Program:
+// Java program for implementation of Insertion Sort 
+	class Insertionsort 
+	{ 
+	    /*Function to sort array using insertion sort*/
+	    void sort(int arr[]) 
+	    { 
+	        int n = arr.length; 
+	        for (int i=1; i<n; ++i) 
+	        { 
+	            int key = arr[i]; 
+	            int j = i-1; 
+	  
+	            /* Move elements of arr[0..i-1], that are 
+	               greater than key, to one position ahead 
+	               of their current position */
+	            while (j>=0 && arr[j] > key) 
+	            { 
+	                arr[j+1] = arr[j]; 
+	                j = j-1; 
+	            } 
+	            arr[j+1] = key; 
+	        } 
+	    } 
+	  
+	    /* A utility function to print array of size n*/
+	    static void printArray(int arr[]) 
+	    { 
+	        int n = arr.length; 
+	        for (int i=0; i<n; ++i) 
+	            System.out.print(arr[i] + " "); 
+	  
+	        System.out.println(); 
+	    } 
+	  
+	    // Driver method 
+	    public static void main(String args[]) 
+	    {         
+	        int arr[] = {12, 11, 13, 5, 6}; 
+	  
+	        Insertionsort ob = new Insertionsort();         
+	        ob.sort(arr); 
+	          
+	        printArray(arr); 
+	    } 
+	} 
+
+Output:
+ 
+
+Question 20(String Handling)
+Write a program that accepts your full name as input and displays the abbreviations of the first and middle names except the last name which is displayed as it is. 
+
+For example, if your name is Robert Brett Roser, then the output should be R.B.Roser.
+
+You also need to implement the following validation checks in your code–
+•	The input should not be number or special characters (if so, please display “Your input is mismatched” message)
+•	Don’t use In-Build function for string handling.
+
+Program:
+//Java program to print the initials 
+//of a name with the surname 
+import java.util.*; 
+
+class Shortname { 
+ public static void printInitials(String str) 
+ { 
+     int len = str.length(); 
+
+     // to remove any leading or trailing spaces 
+     str = str.trim(); 
+
+     // to store extracted words 
+     String t = ""; 
+     for (int i = 0; i < len; i++) { 
+         char ch = str.charAt(i); 
+
+         if (ch != ' ') { 
+
+             // forming the word 
+             t = t + ch; 
+         } 
+
+         // when space is encountered 
+         // it means the name is completed 
+         // and thereby extracted 
+         else { 
+             // printing the first letter 
+             // of the name in capital letters 
+             System.out.print(Character.toUpperCase(t.charAt(0)) 
+                              + ". "); 
+             t = ""; 
+         } 
+     } 
+
+     String temp = ""; 
+
+     // for the surname, we have to print the entire 
+     // surname and not just the initial 
+     // string "t" has the surname now 
+     for (int j = 0; j < t.length(); j++) { 
+
+         // first letter of surname in capital letter 
+         if (j == 0) 
+             temp = temp + Character.toUpperCase(t.charAt(0)); 
+
+         // rest of the letters in small 
+         else
+             temp = temp + Character.toLowerCase(t.charAt(j)); 
+     } 
+
+     // printing surname 
+     System.out.println(temp); 
+ } 
+
+ public static void main(String[] args) 
+ { 
+     String str = "pandaraboina Mahima"; 
+     printInitials(str); 
+ } 
+}
+
+
+Output:
+
+ 
+
+Question 6(String Handling)
+Write a program to add 3 to the ASCII value of the character 'd' and print the equivalent character.
+Code:
+public class Asciid {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+char ch='d';
+
+int acc1=ch+3;
+char d=(char)acc1;
+int cast=(int)ch;
+
+System.out.println("ASCII VALUE 0F d"+cast);
+System.out.println("Ascii value of addind to d"+(acc1));
+System.out.println(d);
+	}
+
+}
+  
+
+Question 8(Looping with Classes and Methods)
+Write a program to print the factorial of a number by defining a method named 'Factorial'.
+Factorial of any number n is represented by n! and is equal to 1*2*3*....*(n-1)*n. E.g.-
+4! = 1*2*3*4 = 24
+3! = 3*2*1 = 6
+2! = 2*1 = 2
+Also,
+1! = 1
+0! = 0
+Code:
+import java.util.*;
+public class Ans{
+  public static int fact(int x){
+    if(x == 0 || x == 1){
+      return 1;
+    }
+    else{
+      return fact(x-1)*x;
+    }
+  }
+
+  public static void main(String[] args) {
+    System.out.println(fact(4));
+    System.out.println(fact(3));
+    System.out.println(fact(2));
+    System.out.println(fact(1));
+      System.out.println(fact(0));
+  }
+}			
+ 
+
+Question 9(Classes and Methods)
+Write a program to print the area of two rectangles having sides (4,5) and (5,8) respectively by creating a class named 'Rectangle' with a method named 'Area' which returns the area and length and breadth passed as parameters to its constructor.
+Code:
+class Rectangle{  
+ int length;  
+ int width;  
+ void insert(int l,int w){  
+  length=l;  
+  width=w;  
+ }  
+ void calculateArea(){System.out.println(length*width);}  
+}  
+class TestRectangle2{  
+ public static void main(String args[]){  
+  Rectangle r1=new Rectangle(),r2=new Rectangle();//creating two objects  
+  r1.insert(4,5);  
+  r2.insert(5,8);  
+  r1.calculateArea();  
+  r2.calculateArea();  
+}  
+}  
+ 
+
+Question 14(Abstract Class)
+We have to calculate the area of a rectangle, a square and a circle. Create an abstract class 'Shape' with three abstract methods namely 'RectangleArea' taking two parameters, 'SquareArea' and 'CircleArea' taking one parameter each. The parameters of 'RectangleArea' are its length and breadth, that of 'SquareArea' is its side and that of 'CircleArea' is its radius. Now create another class 'Area' containing all the three methods 'RectangleArea', 'SquareArea' and 'CircleArea' for printing the area of rectangle, square and circle respectively. Create an object of class 'Area' and call all the three methods.
+Code:
+Public class FindLargestShape
+{
+    public static void main(String arg[])
+    {
+        Rectangle r = new Rectangle(10, 4);
+        Square s = new Square(7);
+        Circle c = new Circle(3.5);
+        
+        System.out.println("Rectangle Area : " + r.getArea());
+        System.out.println("Square Area : " + s.getArea());
+        System.out.println("Circle Area : " + c.getArea());
+        System.out.println();
+        
+        if ((r.getArea() > c.getArea()) && (r.getArea() > s.getArea()))
+        {
+            System.out.println("Rectangle has the largest area.");
+        }
+        else if( s.getArea() > c.getArea() )
+        {
+            System.out.println("Square has the largest area.");
+        }
+        else
+        {
+            System.out.println("Circle has the largest area.");
+        }    
+    }
+}
+
+class Rectangle
+{
+    double length;
+    double breadth;
+
+    Rectangle(double length, double breadth)
+    {
+        this.length = length;
+        this.breadth = breadth;
+    }
+
+    double getArea()
+    {
+        return length * breadth;
+    }
+}
+
+class Square
+{
+    double side;
+
+    Square(double side)
+    {
+        this.side = side;
+    }
+
+    double getArea()
+    {
+        return side * side;
+    }
+}
+
+class Circle
+{
+    double radius;
+
+    Circle(double radius)
+    {
+        this.radius = radius;
+    }
+
+    double getArea()
+    {
+        return (22.0/7.0) * radius * radius;
+    }
+}
+ 
+
+Question 17(Array of objects)
+Let’s create a bank account. Create a class named 'BankAccount' with the following data members
+1 - Name of depositor
+2 - Address of depositor
+3 - Type of account
+4 - Balance in account
+5 - Number of transactions
+Class 'BankAccount' has a method for each of the following 1 - Generate a unique account number for each depositor
+For first depositor, account number will be BA1000, for second depositor it will be BA1001 and so on
+2 - Display information and balance of depositor
+3 - Deposit more amount in balance of any depositor
+4 - Withdraw some amount from balance deposited
+5 - Change address of depositor
+After creating the class, do the following operations
+1 - Enter the information (name, address, type of account, balance) of the depositors. Number of depositors are to be entered by user.
+2 - Print the information of any depositor.
+3 - Add some amount to the account of any depositor and then display final informaion of that depositor
+4 - Remove some amount from the account of any depositor and then display final informaion of that depositor
+5 - Change the address of any depositor and then display the final information of that depositor
+6 - Randomly repeat these processes for some other bank accounts and after that print the total number of transactions.
+Code:
+
+
+class BankAccount
+	{
+	    // instance variable
+	
+	    private String accountNum; // the account number
+	    private double balance;	   // the amount on deposit
+	
+	    /**
+	     * Constructs a bank account with an account number and initial balance
+	     *
+	     * @param acctNum the account number
+	     * @param initialBalance the initial balance
+	     */
+	    public BankAccount(String acctNum, double initialBalance)
+	    {
+	        accountNum = acctNum;
+	        balance = initialBalance;
+	    }
+	
+	    /**
+	     * Deposits money into the bank account.
+	     *
+	     * @param amount the amount to deposit
+	     */
+	    public void deposit(double amount)	// note "mutator" method
+	    {
+	        double newBalance = balance + amount;
+	        balance = newBalance;				// modifies instance var			
+	    }
+	
+	    /**
+	     * Withdraws money from the bank account.
+	     *
+	     * @param amount the amount to withdraw
+	     */
+	    public void withdraw(double amount)	// note "mutator" method
+	    {
+	        double newBalance = balance - amount;
+	        balance = newBalance;			// modifies instance var
+	    }
+	
+	    /**
+	     * Gets the account number
+	     *
+	     * @return the account number
+	     */
+	    public String getAccount()	// note "accessor" method
+	    {
+	        return accountNum;		// returns value of instance var
+	    }
+	
+	    /**
+	     * Gets the current balance
+	     *
+	     * @return the balance
+	     */
+	    public double getBalance()	// note "accessor" method
+	    {
+	        return balance;			// returns value of instance var
+	    }
+	
+	    /**
+	     * Transfer funds from one bank account object to another
+	     *
+	     * @param destination the BankAccount object receiving the funds
+	     * @param amount the amount of money to be transferred
+	     */
+	    public void transferFundsA(BankAccount destination, double amount)
+	    {
+	        destination.balance = destination.balance + amount;
+	        // note explicit use of this to reference instance variables of the 
+	        // object for which the method was called
+	        this.balance = this.balance - amount;
+	    }
+	
+	    //  Another way to transfer funds - by calling deposit and withdraw methods.
+	    //  Shows explicit use of "this" to call another method for the same object
+	    //  for which the current method was called.
+	    public void transferFundsB(BankAccount destination, double amount)
+	    {
+	        destination.deposit(amount);	// deposit to "destination" account
+	        this.withdraw(amount);           // withdraw from this account
+	    }
+	}
+	//******************** end of BankAccount class definition ********************
+	
+	/**
+	 * A class to test the BankAccount2 class
+	 */
+	public class BankAccountTest2
+	{
+	
+	    public static void main(String[] args)
+	    {
+	        // create two BankAccount objects
+	        BankAccount first = new BankAccount("1111111", 20000);
+	        BankAccount second = new BankAccount("2222222", 30000);
+	
+	        // print initial balances
+	        System.out.printf("Account #%s has initial balance of $%.2f%n",
+	                first.getAccount(), first.getBalance());
+	
+	        System.out.printf("Account #%s has initial balance of $%.2f%n",
+	                second.getAccount(), second.getBalance());
+	
+	        // transfer $5000 from first to second account (via transferFundsA())
+	        first.transferFundsA(second, 5000);
+	
+	        // print new balances
+	        System.out.println("\nAfter \"first.transferFunds(second, 5000)\" ...");
+	        System.out.printf("Account #%s has new balance of $%.2f%n",
+	                first.getAccount(), first.getBalance());
+	
+	        System.out.printf("Account #%s has new balance of $%.2f%n",
+	                second.getAccount(), second.getBalance());
+	
+	        // transfer $10000 from second account to first (via transferFundsB())
+	        second.transferFundsB(first, 10000);
+	
+	        // print new balances
+	        System.out.println("\nAfter \"second.transferFunds(first, 10000)\" ...");
+	        System.out.printf("Account #%s has new balance of $%.2f%n",
+	                first.getAccount(), first.getBalance());
+	
+	        System.out.printf("Account #%s has new balance of $%.2f%n",
+	                second.getAccount(), second.getBalance());
+	    }
+}
+ 
+
