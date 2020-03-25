@@ -1,0 +1,509 @@
+Core Java Assignment
+
+
+Question: - 1 (Constructor)
+WAP in java to create Box class with parameterized constructor with an object argument 
+to initialize length, breadth and height also create a function volume which returns the volume of the box and print it in main method.
+Program: 
+class Box1 {
+int length;
+int breadth;
+int height;
+public Box1(int length, int breadth, int height) {
+	super();
+	this.length = length;
+	this.breadth = breadth;
+	this.height = height;
+}
+int volume()
+{
+	return length*breadth*height;
+}
+
+	}
+
+public class Boxdemo
+{
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Box1 b=new Box1(5,15,20);
+		System.out.println(b.volume());
+}
+}
+Output:
+ 
+
+Question: - 2 (Constructor)
+Write a program in java with class Employee and do the following operations on it
+1) Create two constructor default and with Object as parameter to initialize class variables.
+2) Create a function calculate which calculates the pf and allowances on the salary of employee and return 
+the all values as an object 
+3) Print all the employee object associated values returned from calculate functions
+Program:
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+  class Employee1 {
+int emp_id;
+String empname;
+float basicsalary;
+
+
+public Employee1(int emp_id, String empname, float basicsalary) {
+	super();
+	this.emp_id = emp_id;
+	this.empname = empname;
+	this.basicsalary = basicsalary;
+}
+void calculation()
+{
+	float da=basicsalary*15/100;
+	float hra=basicsalary*10/100;
+	float pf=basicsalary+da+hra;
+	System.out.println("emp_id" +emp_id);
+	System.out.println("empname"+empname);
+	System.out.println("pf"+pf);
+}
+}
+public class Employee
+{
+public static void main(String[] args) throws NumberFormatException, IOException {
+		// TODO Auto-generated method stub
+	BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+	System.out.println("enter employeeid");
+	int id=Integer.parseInt(br.readLine());
+	System.out.println("enter employee name");
+	String name=br.readLine();
+	System.out.println("enter pf");
+	float pf=Float.parseFloat(br.readLine());
+Employee1 e=new Employee1(id,name,pf);
+e.calculation();
+}
+}
+Output:
+ 
+ 
+Question: - 3 (String Handing)
+ Create a class Student with following operations
+1) create parameterized constructor to initialize the objects 
+2) create a function isEqual() to check whether the two objects are equal or not which returns
+the Boolean value and gets two objects
+3) print the result in main method if objects are equals or not (take variables as your assumption)
+Program: 
+class Student{
+	String name;
+	int id;
+	String address;
+	public Student(String name,int id,String address) //creating parameterised  constructor
+	{
+		super();
+		this.name = name;
+		this.id=id;
+		this.address=address;
+	}
+	public void isequal(boolean b)//is equal method and getting object
+	{
+		// TODO Auto-generated method stub
+		System.out.println(b);	
+	}
+	
+}
+ public class Student3
+{
+	public static void main(String[] args) {
+	try {
+	Student s=new Student("divya",14,"vijayawada");
+	Student v=new Student("devaki",14,"vijayawada");
+	Student t=s;//creating instance for object
+	t.isequal(s.equals(v));//checking objects are equal or not
+	t.isequal(s.equals(t));//checking objects are equal or not
+  }catch(Exception e)
+	{
+		System.out.println(".");
+	}
+	
+	
+	
+}
+}
+Output:
+ 
+
+Question: - 4 (Class And Objects)
+Define a “Clock” class that does the following: -
+    a. Accept hours, minutes and seconds.
+    b. Check the validity numbers.
+    c. Set the time to AM/PM mode.
+  Use necessary constructors and methods to do the above task.
+Program:
+public class Clock{
+    public int Hours;
+    public int Minutes;
+    public int Seconds;
+    public String format="AM";
+    Clock(){}
+    Clock(int hours, int minutes, int seconds){
+        Hours=hours;
+        Minutes=minutes;
+        Seconds=seconds;
+    }
+     public String TimeSet(){
+        if (Hours >= 12) {
+           Hours = Hours - 12;
+           format= "PM";
+      }
+        System.out.println(Hours+":"+Minutes+":"+Seconds+" "+format);
+        return format;
+      }
+
+      public static void main(String[] args){
+          Clock c=new Clock(4, 56, 30);
+          Clock c1=new Clock(20,30,46);
+          c.TimeSet();
+          c1.TimeSet();
+      }
+}
+Output:
+ 
+
+
+
+
+
+Question: - 5(Multithreading)
+Write down a java program to print even and odd numbers series respectively from two threads: 
+    t1 and t2 synchronizing on a shared object
+    Let t1 print message “ping — >” and t2 print message “, —-pong”.
+    Take as command line arguments, the following inputs to the program:
+    Sleep Interval for thread t1
+    Sleep Interval for thread t2
+    Message per cycle
+    No of cycles
+Program:
+//OddThread to print odd numbers
+//Calls printOdd() method of SharedPrinter class until limit is exceeded.
+class OddThread extends Thread
+{
+int limit;
+sharedPrinter printer;
+public OddThread(int limit, sharedPrinter printer)
+{
+this.limit = limit;
+this.printer = printer;
+}
+@Override
+public void run() 
+{
+int oddNumber = 1;        //First odd number is 1
+while (oddNumber <= limit)
+{
+printer.printOdd(oddNumber);       //Calling printOdd() method of SharedPrinter class
+oddNumber = oddNumber + 2;         //Incrementing to next odd number
+}
+}
+}
+//EvenThread to print even numbers.
+//Calls printEven() method of SharedPrinter class until limit is exceeded.
+class EvenThread extends Thread
+{
+int limit;
+sharedPrinter printer;
+public EvenThread(int limit, sharedPrinter printer)
+{
+this.limit = limit;
+this.printer = printer;
+}
+@Override
+public void run() 
+{
+int evenNumber = 2;           //First even number is 2
+while (evenNumber <= limit)
+{
+printer.printEven(evenNumber);          //Calling printEven() method of SharedPrinter class
+evenNumber = evenNumber + 2;           //Incrementing to next even number
+}
+}
+}
+class sharedPrinter
+{
+//A boolean flag variable to check whether odd number is printed or not
+//Initially it is false.
+boolean isOddPrinted = false;
+//synchronized printOdd() method to print odd numbers. It is executed by OddThread.
+//First checks isOddPrinted, 
+//if isOddPrinted is true then it waits until next even number is printed by EvenThread
+//If isOddPrinted is false then prints next odd number, sets isOddPrinted to true
+//sleeps for 1 second before notifying EvenThread
+synchronized void printOdd(int number)
+{
+while (isOddPrinted)
+{
+try
+{
+wait();
+} 
+catch (InterruptedException e)
+{
+e.printStackTrace();
+}
+}
+System.out.println(Thread.currentThread().getName()+number);
+isOddPrinted = true;
+try
+{
+Thread.sleep(1000);
+} 
+catch (InterruptedException e) 
+{
+e.printStackTrace();
+}
+notify();
+}
+//Synchronized printEven() method to print even numbers. It is executed by EvenThread.
+//First checks isOddPrinted, 
+//if isOddPrinted is false then it waits until next odd number is printed by OddThread
+//If isOddPrinted is true then it prints next even number, sets isOddPrinted to false
+//sleeps for 1 second before notifying OddThread
+synchronized void printEven(int number)
+{
+while (! isOddPrinted)
+{
+try
+{
+wait();
+}
+catch (InterruptedException e) 
+{
+e.printStackTrace();
+}
+}
+System.out.println(Thread.currentThread().getName()+number);
+isOddPrinted = false;
+try
+{
+Thread.sleep(1000);
+} 
+catch (InterruptedException e) 
+{
+e.printStackTrace();
+}
+notify();
+}
+}
+//Main Class
+public class EvenOddClass 
+{
+public static void main(String[] args) 
+{
+sharedPrinter printer = new sharedPrinter();
+OddThread oddThread = new OddThread(20, printer);
+oddThread.setName("ping-->");
+EvenThread evenThread = new EvenThread(20, printer);
+evenThread.setName("pong-->");
+oddThread.start();
+evenThread.start();
+}
+}
+ 
+
+Question: - 6(Input/Output)
+Create a one text file “File1.txt” and write a text on file: -
+“File handling in Java implies reading from and writing data to a file. The File class from the java.io package, allows us to work with different formats of files. In order to use the File class, you need to create an object of the class and specify the filename or directory name”
+
+This content should be copied in another file with name “File2.txt” with the help of java IO.
+
+Program:
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+
+public class Filei {
+
+	public static void main(String[] args) throws IOException {
+		// TODO Auto-generated method stub
+	try {
+		File obj=new File("C:\\Users\\Smartboy Manu\\Documents\\manly\\Filename.txt");
+		FileWriter mw=new FileWriter("C:\\Users\\Smartboy Manu\\Documents\\manly\\Filename.txt");
+		mw.write("file is created");
+
+		mw.close();
+		File obj1=new File("C:\\Users\\Smartboy Manu\\Documents\\manly\\Filename1.txt");
+		
+	InputStream fis=new FileInputStream(obj);
+	OutputStream fos=new FileOutputStream(obj1);
+	int i;
+	while((i=fis.read())!=-1)
+	{
+		fos.write(i);
+	}fis.close();
+	fos.close();
+	
+		
+		
+	}catch(Exception e)
+	{
+		System.out.println(e);
+	}
+	}
+
+}
+Output:
+ 
+CONTENT IN FILE
+
+ 
+COPYING FROM FILE TO FILE1
+
+ 
+(String Handling)
+
+The class Movie is started below. An instance of class Movie represents a film. This class
+has the following three class variables:
+● title, which is a String representing the title of the movie
+● studio, which is a String representing the studio that made the movie
+● rating, which is a String representing the rating of the movie (i.e. PG­13, R, etc)
+public class Movie {
+private String title;
+private String studio;
+private String rating;
+// your code goes here
+}
+
+Question: - 7
+a) Write a constructor for the class Movie, which takes a String representing the title of the
+movie, a String representing the studio, and a String representing the rating as its
+arguments, and sets the respective class variables to these values.
+Program:
+class Movie
+{
+	private String title;//set the class variable for title
+	private String studio;//set the class variable for studio
+	private String rating;//set the class variable for rating
+	public Movie(String title, String studio, String rating) //parameterised constructor
+	{
+		super();
+		this.title = title;
+		this.studio = studio;
+		this.rating = rating;
+	}
+	void display()
+	{
+		System.out.println(title+"   "+studio+"  "+rating);
+	}
+}
+public class Movie1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Movie m=new Movie("MANAM","Annapurnastudio","family oriented");
+m.display();
+	}
+}
+	Output:	
+ 
+Question: - 8
+b) Write a second constructor for the class Movie, which takes a String representing the title
+of the movie and a String representing the studio as its arguments, and sets the respective
+class variables to these values, while the class variable ratings set to "PG".
+program:
+class Movie3
+{
+	String title;
+	String studio;
+	String rating;
+	public Movie3(String title, String studio) {
+		super();
+		this.title = title;
+		this.studio = studio;
+	}
+	public String getRating() {
+		return rating;
+	}
+	public void setRating(String rating) {
+		this.rating = rating;
+	}
+	
+	void display()
+	{
+		System.out.println(title+"   "+studio);
+	}
+}
+
+public class Movie2 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Movie3 m=new Movie3("MANAM","Annapurnastudio");
+		m.setRating("PG");
+		System.out.println(m.getRating());
+		m.display();
+	}
+
+}
+
+
+Output:
+ 
+Question: - 9
+c) Write a method getPG, which takes an array of base type Movies its argument, and
+returns a new array of only those movies in the input array with a rating of "PG". Your may
+assume the input array is full of Movie instances. The returned array need not be full.
+
+Program:
+public static Movie[] 
+getPG(Movie[] mov) {
+ Movie[] pgMov = new Movie[mov.length]; 
+int newArrayIndex = 0; 
+for (int i = 0; i < mov.length; i++) {
+ if (mov[i].rating.equals(“PG”)) {
+ pgMov[newArrayIndex] = mov[i]; 
+newArrayIndex++;
+ }
+ } 
+return pgMov;
+ }
+
+Question: - 10
+d) Write a piece of code that creates an instance of the class Movie with the title “Casino
+Royale”, the studio “Eon Productions”, and the rating “PG­13”.
+program:
+public class MovieSetPG {
+    public String Title;
+    public String Studio;
+    public String Rating;
+    MovieSetPG(){}
+    MovieSetPG(String title, String studio){
+        Title=title;
+        Studio=studio;
+       
+        }
+     public  void setName(String n){
+        Rating=n;
+    }
+    public  String getName(){
+        return Rating;
+    }
+    
+    
+    public static void main(String args[]) {
+      MovieSetPG m=new MovieSetPG("CasinoRoyable","Eon Production" );
+
+m.setName("13");
+System.out.println("Movie deails:"+"\n"+"title = "+m.Title+"\n"+"studio = "+m.Studio+"\n"+"rating ="+m.getName());
+}
+}
+
+
+
+
+
+
+Output:
+ 
+
+
